@@ -248,6 +248,8 @@ public class Bean implements Parcelable {
             case Protocol.MSG_ID_CC_LED_WRITE:
                 // ignore this response, it appears to be only an ack
                 break;
+            case Protocol.MSG_ID_BT_SET_SCRATCH:
+                Log.i(TAG, "MSG_ID_BT_SET_SCRATCH");
             default:
                 Log.e(TAG, "Received message of unknown type " + Integer.toHexString(type));
                 disconnect();
@@ -304,7 +306,28 @@ public class Bean implements Parcelable {
         mTransport.sendMessage(serialMessage.getBuffer());
     }
 
-    private void sendMessageWithoutPayload(int type) {
+
+    public void setScratchData(int number, byte[] data) {
+        if (number < 0 || number > 5) {
+            throw new IllegalArgumentException("Scratch number must be in 1 to 5");
+        }
+        Buffer buffer = new Buffer();
+        buffer.writeByte(number & 0xff);
+        buffer.write(data);
+        sendMessage(Protocol.MSG_ID_BT_SET_SCRATCH, buffer);
+    }
+
+    public void setScratchData(int number, String string) {
+        if (number < 0 || number > 5) {
+            throw new IllegalArgumentException("Scratch number must be in 1 to 5");
+        }
+        Buffer buffer = new Buffer();
+        buffer.writeByte(number & 0xff);
+        buffer.write(string.getBytes());
+        sendMessage(Protocol.MSG_ID_BT_SET_SCRATCH, buffer);
+    }
+
+    public void sendMessageWithoutPayload(int type) {
         sendMessage(type, (Buffer) null);
     }
 

@@ -2,7 +2,6 @@ package com.sim.board;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 import com.sim.board.bt.Bean;
 import com.sim.board.bt.BeanDiscoveryListener;
 import com.sim.board.bt.BeanListener;
@@ -21,7 +19,7 @@ import net.simonvt.menudrawer.Position;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
+import java.util.Random;
 
 public class MainActivity extends Activity {
     /**
@@ -45,12 +43,14 @@ public class MainActivity extends Activity {
 
         @Override
         public void onConnectionFailed() {
+            mBean = null;
             ToastUtil.TextToast(MainActivity.this, "onConnectionFailed", 3000);
             Log.d(TAG, "onConnectionFailed");
         }
 
         @Override
         public void onDisconnected() {
+            mBean = null;
             ToastUtil.TextToast(MainActivity.this, "onDisconnected", 3000);
             Log.d(TAG, "onDisconnected");
         }
@@ -65,14 +65,12 @@ public class MainActivity extends Activity {
         @Override
         public void onBeanDiscovered(Bean bean) {
             mBean = bean;
-            Log.i(TAG, "onBeanDiscovered");
+            mBean.connect(MainActivity.this, beanListener);
+            Log.i(TAG, "onBeanDiscovered:" + bean.getDevice());
         }
 
         @Override
         public void onDiscoveryComplete() {
-            if (mBean != null) {
-                mBean.connect(MainActivity.this, beanListener);
-            }
             Log.i(TAG, "onDiscoverComplete");
         }
 
@@ -122,7 +120,10 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 if (mBean != null) {
-                    mBean.sendSerialMessage("1/n");
+                    //mBean.setScratchData(1, "1");
+                    Random random = new Random();
+                    int r = random.nextInt();
+                    mBean.setLed(r, random.nextInt() % 0xff, random.nextInt() % 0xff);
                 } else {
                     initDevice();
                 }
@@ -133,7 +134,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 if (mBean != null) {
-                    mBean.sendSerialMessage("0/n");
+                    mBean.setScratchData(1, "0");
                 } else {
                     initDevice();
                 }
