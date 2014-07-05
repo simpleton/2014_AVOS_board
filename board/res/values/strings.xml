@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">board</string>
+
+    <string name="md__drawerOpenIndicatorDesc">Close drawer</string>
+
+    <string name="md__drawerClosedIndicatorDesc">Open drawer</string>
+    <string name="app_name">Boarding</string>
 </resources>
