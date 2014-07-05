@@ -1,33 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
+
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#DE6F25"
         >
-    <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Hello World, MainActivity"
-            />
 
-    <Button
-            android:layout_width="fill_parent"
-            android:layout_height="60dp"
-            android:id="@+id/scan"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_height="fill_parent"
+            android:layout_weight="2"
+            android:layout_width="0dp">
+        <Button
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:id="@+id/scan"
+                android:visibility="invisible"/>
 
-    <Button
-            android:layout_marginTop="20dp"
-            android:layout_width="fill_parent"
-            android:layout_height="60dp"
-            android:id="@+id/start"
-            android:text="start"/>
+        <Button
+                android:layout_marginTop="20dp"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:id="@+id/start"
+                android:text="start"
+                android:visibility="invisible"/>
 
-    <Button
-            android:layout_marginTop="20dp"
-            android:layout_width="fill_parent"
-            android:layout_height="60dp"
-            android:id="@+id/stop"
-            android:text="stop"/>
+        <Button
+                android:layout_marginTop="20dp"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:id="@+id/stop"
+                android:text="stop"
+                android:visibility="invisible"/>
 
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent">
+
+            <Button
+                    android:id="@+id/btn_pk"
+                    android:layout_height="120dp"
+                    android:layout_width="120dp"
+                    android:text="@string/pk"
+                    android:textColor="@color/white"
+                    >
+            </Button>
+
+            <Button
+                    android:id="@+id/btn_task"
+                    android:layout_height="120dp"
+                    android:layout_width="120dp"
+                    android:text="@string/task"
+                    android:textColor="@color/white">
+            </Button>
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent">
+            <Button
+                    android:id="@+id/btn_battery_time"
+                    android:layout_height="120dp"
+                    android:layout_width="120dp"
+                    android:text="@string/battery_time"
+                    android:textColor="@color/white">
+            </Button>
+
+            <Button
+                    android:id="@+id/btn_battery_percent"
+                    android:layout_height="120dp"
+                    android:layout_width="120dp">
+            </Button>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            >
+
+    </LinearLayout>
 </LinearLayout>
 

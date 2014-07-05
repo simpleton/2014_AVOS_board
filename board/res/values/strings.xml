@@ -5,4 +5,9 @@
 
     <string name="md__drawerClosedIndicatorDesc">Open drawer</string>
     <string name="app_name">Boarding</string>
+
+    <string name="pk">PK战况</string>
+    <string name="task">任务</string>
+    <string name="battery_time">续航时间</string>
+    <string name="battery_percent"></string>
 </resources>
