@@ -21,11 +21,15 @@ import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.avos.avoscloud.AVAnalytics;
 import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVGeoPoint;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.FindCallback;
+import com.sim.board.model.Club;
+import com.sim.board.model.Venue;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -183,7 +187,6 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
             if (!isResized) {
                 isResized = true;
                 changeCamera(CameraUpdateFactory.zoomTo(16f));
-                fetchClub(0);
                 fetchVenue(0, new AVGeoPoint(aLocation.getLatitude(), aLocation.getLongitude()));
             }
 
@@ -236,7 +239,7 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
             @Override
             public void done(List<AVObject> avObjects, AVException e) {
                 if (e == null) {
-                    drawPosition(avObjects, CLUB);
+                    drawPosition(avObjects);
                 } else {
                     e.printStackTrace();
                 }
@@ -251,7 +254,7 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
             @Override
             public void done(List<AVObject> avObjects, AVException e) {
                 if (e == null) {
-                    drawPosition(avObjects, VENUE);
+                    drawPosition(avObjects);
                 } else {
                     e.printStackTrace();
                 }
@@ -261,7 +264,7 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
         AVQuery<AVObject> query = AVQuery.getQuery("Venue");
         query.setLimit(limit);
         query.whereNear("location", geopoint);
-        query.include("Club");
+        query.include("club");
         query.findInBackground(venueCallback);
     }
 
@@ -279,17 +282,22 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
         query.findInBackground(callback);
     }
 
-    public void drawPosition(List<AVObject> list, int type) {
+    public void drawPosition(List<AVObject> list) {
         if (list == null) return;
-        switch (type) {
-            case VENUE:
-                Log.d(TAG, "VENUE" + list.size());
-                break;
-            case CLUB:
-                Log.d(TAG, "CLUB" + list.size());
-                break;
-            default:
-                ;
+        for (AVObject avobjec : list) {
+            Venue venue = new Venue();
+            venue.address = (String) avobjec.get("address");
+            AVObject clubObject  = avobjec.getAVObject("club");
+            venue.location = avobjec.getAVGeoPoint("location");
+            venue.name = (String) avobjec.get("name");
+
+            Club club  = new Club();
+            club.color = (String) clubObject.get("color");
+            club.name = (String) clubObject.get("name");
+            club.logo = (AVFile) clubObject.get("logo");
+
+            venue.club = club;
+            Log.i(TAG, venue.toString());
         }
     }
 }
