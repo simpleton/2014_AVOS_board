@@ -22,12 +22,13 @@ import com.sim.board.util.SwipeDetector;
 import com.sim.board.util.ToastUtil;
 import net.simonvt.menudrawer.MenuDrawer;
 import net.simonvt.menudrawer.Position;
+import okio.Buffer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-public class MainActivity extends Activity {
+public class MainActivity extends BaseActivity {
     /**
      * Called when the activity is first created.
      */
@@ -150,7 +151,7 @@ public class MainActivity extends Activity {
 
     private void initBtn() {
         Button scanBtn = (Button) findViewById(R.id.scan);
-        Button startBtn = (Button) findViewById(R.id.start);
+        final Button startBtn = (Button) findViewById(R.id.start);
         Button endBtn = (Button) findViewById(R.id.stop);
         scanBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,6 +182,24 @@ public class MainActivity extends Activity {
                 } else {
                     initDevice();
                 }
+            }
+        });
+
+        Button pkBtn = (Button) findViewById(R.id.btn_pk);
+        pkBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LocationSourceActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button taskBtn = (Button) findViewById(R.id.btn_task);
+        taskBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LocationSourceActivity.class);
+                startActivity(intent);
             }
         });
 

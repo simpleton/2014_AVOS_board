@@ -10,7 +10,7 @@ import com.sim.board.util.SwipeDetector;
 /**
  * Created by sim on 7/6/14.
  */
-public class ControllerActivity extends Activity {
+public class ControllerActivity extends BaseActivity {
     private ImageView iv;
     private SwipeDetector sd;
 
@@ -18,7 +18,7 @@ public class ControllerActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.controller);
-
+        getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.ab_background));
         iv = (ImageView) findViewById(R.id.imageView1);
 
         sd = new SwipeDetector(this, new SwipeDetector.OnSwipeListener() {
