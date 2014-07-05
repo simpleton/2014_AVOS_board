@@ -8,14 +8,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import com.sim.board.bt.Bean;
 import com.sim.board.bt.BeanDiscoveryListener;
 import com.sim.board.bt.BeanListener;
 import com.sim.board.bt.BeanManager;
+import com.sim.board.util.SwipeDetector;
 import com.sim.board.util.ToastUtil;
 import net.simonvt.menudrawer.MenuDrawer;
 import net.simonvt.menudrawer.Position;
@@ -30,12 +33,11 @@ public class MainActivity extends Activity {
      */
     private static final int MENU_OVERFLOW = 1;
     private static final String TAG = "MainActivity";
-    private Button scanBtn;
-    private Button startBtn;
-    private Button endBtn;
+
+    private SwipeDetector swipeDetector;
     private Bean  mBean;
     private MenuDrawer mDrawer;
-
+    private LinearLayout gestureArea;
     private static final int REQUEST_ENABLE_BT = 2;
 
     final BeanListener beanListener = new BeanListener() {
@@ -96,6 +98,16 @@ public class MainActivity extends Activity {
         initBtn();
         initDevice();
         initProfileAction();
+        swipeDetector = new SwipeDetector(this, swipListener);
+
+        gestureArea = (LinearLayout) findViewById(R.id.gesture);
+        gestureArea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ControllerActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -137,9 +149,9 @@ public class MainActivity extends Activity {
     }
 
     private void initBtn() {
-        scanBtn = (Button) findViewById(R.id.scan);
-        startBtn = (Button) findViewById(R.id.start);
-        endBtn = (Button) findViewById(R.id.stop);
+        Button scanBtn = (Button) findViewById(R.id.scan);
+        Button startBtn = (Button) findViewById(R.id.start);
+        Button endBtn = (Button) findViewById(R.id.stop);
         scanBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -171,7 +183,33 @@ public class MainActivity extends Activity {
                 }
             }
         });
+
     }
+
+
+    private SwipeDetector.OnSwipeListener swipListener = new SwipeDetector.OnSwipeListener() {
+
+        @Override
+        public void onSwipeUp(float distance, float velocity) {
+            Log.d(TAG, "onSwipUp");
+        }
+
+        @Override
+        public void onSwipeRight(float distance, float velocity) {
+            Log.d(TAG, "onSwipRight");
+        }
+
+        @Override
+        public void onSwipeLeft(float distance, float velocity) {
+            Log.d(TAG, "onSwipLeft");
+        }
+
+        @Override
+        public void onSwipeDown(float distance, float velocity) {
+            Log.d(TAG, "onSwipDown");
+        }
+    };
+
 
     private boolean initDevice() {
         BeanManager.getInstance().startDiscovery(beanDiscoveryListener);
@@ -199,5 +237,10 @@ public class MainActivity extends Activity {
 
         listView.setAdapter(adapter);
         return true;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return swipeDetector.onTouch(null, event);
     }
 }
