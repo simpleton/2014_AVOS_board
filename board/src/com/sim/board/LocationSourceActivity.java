@@ -15,6 +15,8 @@ import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.BitmapDescriptor;
 import com.amap.api.maps.model.BitmapDescriptorFactory;
+import com.amap.api.maps.model.Circle;
+import com.amap.api.maps.model.CircleOptions;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
@@ -29,7 +31,6 @@ import com.avos.avoscloud.FindCallback;
 import com.sim.board.model.Club;
 import com.sim.board.model.Venue;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,8 +48,8 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
 	private Marker marker;// 定位雷达小图标
 
     private boolean isResized = false;
-    private static final int VENUE = 1;
-    private static final int CLUB = 2;
+    private static final int VENUE_SIZE = 800;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +113,8 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
 		aMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
 		//设置定位的类型为定位模式 ，可以由定位、跟随或地图根据面向方向旋转几种 
 		aMap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
+
+
 	}
 
 	 
@@ -239,7 +242,7 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
             @Override
             public void done(List<AVObject> avObjects, AVException e) {
                 if (e == null) {
-                    drawPosition(avObjects);
+                    parserData(avObjects);
                 } else {
                     e.printStackTrace();
                 }
@@ -254,7 +257,7 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
             @Override
             public void done(List<AVObject> avObjects, AVException e) {
                 if (e == null) {
-                    drawPosition(avObjects);
+                    parserData(avObjects);
                 } else {
                     e.printStackTrace();
                 }
@@ -278,11 +281,11 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
         Log.i(TAG, "fetchNear" + name + "geo:" + geoPoint.getLatitude() + ":" + geoPoint.getLongitude() );
         AVQuery<AVObject> query = new AVQuery<AVObject>("PlaceObject");
         query.whereNear("location", geoPoint);
-        query.setLimit(limit);            //获取最接近用户地点的10条数据
+        query.setLimit(limit);
         query.findInBackground(callback);
     }
 
-    public void drawPosition(List<AVObject> list) {
+    public void parserData(List<AVObject> list) {
         if (list == null) return;
         for (AVObject avobjec : list) {
             Venue venue = new Venue();
@@ -292,12 +295,20 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
             venue.name = (String) avobjec.get("name");
 
             Club club  = new Club();
-            club.color = (String) clubObject.get("color");
+            club.color = "#" + (String) clubObject.get("color");
             club.name = (String) clubObject.get("name");
             club.logo = (AVFile) clubObject.get("logo");
 
             venue.club = club;
             Log.i(TAG, venue.toString());
+
+            drawVenue(venue.location, Color.parseColor(club.color));
         }
+    }
+
+    public void drawVenue(AVGeoPoint avGeoPoint, int color) {
+        Circle circle = aMap.addCircle(new CircleOptions().center(new LatLng(avGeoPoint.getLatitude(), avGeoPoint.getLongitude()))
+                .radius(VENUE_SIZE).strokeColor(Color.BLUE).fillColor(color)
+                .strokeWidth(1));
     }
 }
