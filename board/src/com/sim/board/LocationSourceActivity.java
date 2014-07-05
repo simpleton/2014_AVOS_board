@@ -310,5 +310,7 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
         Circle circle = aMap.addCircle(new CircleOptions().center(new LatLng(avGeoPoint.getLatitude(), avGeoPoint.getLongitude()))
                 .radius(VENUE_SIZE).strokeColor(Color.BLUE).fillColor(color)
                 .strokeWidth(1));
+        circle.setFillColor(Color.argb(127, Color.red(color),
+                Color.green(color), Color.blue(color)));
     }
 }
