@@ -3,6 +3,7 @@ package com.sim.board;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.location.LocationManagerProxy;
@@ -18,14 +19,23 @@ import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
+import com.avos.avoscloud.AVAnalytics;
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVGeoPoint;
+import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.AVQuery;
+import com.avos.avoscloud.FindCallback;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * AMapV2地图中简单介绍显示定位小蓝点
  */
 public class LocationSourceActivity extends BaseActivity implements LocationSource,
         AMapLocationListener {
+
+    private static final String TAG = "LocationSourceActivity";
 	private AMap aMap;
 	private MapView mapView;
 	private OnLocationChangedListener mListener;
@@ -33,10 +43,15 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
 	private Marker marker;// 定位雷达小图标
 
     private boolean isResized = false;
-	
+    private static final int VENUE = 1;
+    private static final int CLUB = 2;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+        AVAnalytics.trackAppOpened(getIntent());
 		super.onCreate(savedInstanceState);
+
+
 		setContentView(R.layout.locationsource_activity);
         getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.ab_background));
         /*
@@ -49,7 +64,7 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
 		mapView = (MapView) findViewById(R.id.map);
 		mapView.onCreate(savedInstanceState);// 此方法必须重写
 		init();
-	}
+    }
 
 	/**
 	 * 初始化
@@ -166,9 +181,13 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
 			float bearing = aMap.getCameraPosition().bearing;
 			aMap.setMyLocationRotateAngle(bearing);// 设置小蓝点旋转角度
             if (!isResized) {
-                changeCamera(CameraUpdateFactory.zoomTo(16f));
                 isResized = true;
+                changeCamera(CameraUpdateFactory.zoomTo(16f));
+                fetchClub(0);
+                fetchVenue(0, new AVGeoPoint(aLocation.getLatitude(), aLocation.getLongitude()));
             }
+
+
         }
 	}
 
@@ -212,5 +231,65 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
 		mAMapLocationManager = null;
 	}
 
-	
+    public void fetchClub(final int limit) {
+        FindCallback<AVObject> clubCallback = new FindCallback<AVObject>() {
+            @Override
+            public void done(List<AVObject> avObjects, AVException e) {
+                if (e == null) {
+                    drawPosition(avObjects, CLUB);
+                } else {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        fetchFromAVOS(limit, "Club", clubCallback);
+    }
+
+    public void fetchVenue(final int limit, AVGeoPoint geopoint) {
+        FindCallback<AVObject> venueCallback = new FindCallback<AVObject>() {
+            @Override
+            public void done(List<AVObject> avObjects, AVException e) {
+                if (e == null) {
+                    drawPosition(avObjects, VENUE);
+                } else {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        AVQuery<AVObject> query = AVQuery.getQuery("Venue");
+        query.setLimit(limit);
+        query.whereNear("location", geopoint);
+        query.include("Club");
+        query.findInBackground(venueCallback);
+    }
+
+    private void fetchFromAVOS(final int limit, final String name, FindCallback<AVObject> callback) {
+        AVQuery<AVObject> query = new AVQuery<AVObject>(name);
+        query.limit(limit);
+        query.findInBackground(callback);
+    }
+
+    private void fetchNearDataFromAVOS(final int limit, final String name, AVGeoPoint geoPoint, FindCallback<AVObject> callback) {
+        Log.i(TAG, "fetchNear" + name + "geo:" + geoPoint.getLatitude() + ":" + geoPoint.getLongitude() );
+        AVQuery<AVObject> query = new AVQuery<AVObject>("PlaceObject");
+        query.whereNear("location", geoPoint);
+        query.setLimit(limit);            //获取最接近用户地点的10条数据
+        query.findInBackground(callback);
+    }
+
+    public void drawPosition(List<AVObject> list, int type) {
+        if (list == null) return;
+        switch (type) {
+            case VENUE:
+                Log.d(TAG, "VENUE" + list.size());
+                break;
+            case CLUB:
+                Log.d(TAG, "CLUB" + list.size());
+                break;
+            default:
+                ;
+        }
+    }
 }

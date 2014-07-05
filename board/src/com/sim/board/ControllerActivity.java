@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.ImageView;
+import com.avos.avoscloud.AVAnalytics;
 import com.sim.board.util.SwipeDetector;
 
 /**
@@ -16,6 +17,7 @@ public class ControllerActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AVAnalytics.trackAppOpened(getIntent());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.controller);
         getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.ab_background));

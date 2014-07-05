@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import com.avos.avoscloud.AVAnalytics;
 import com.sim.board.bt.Bean;
 import com.sim.board.bt.BeanDiscoveryListener;
 import com.sim.board.bt.BeanListener;
@@ -91,6 +92,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AVAnalytics.trackAppOpened(getIntent());
         setContentView(R.layout.main);
         getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.ab_background));
         mDrawer = MenuDrawer.attach(this, Position.RIGHT);
