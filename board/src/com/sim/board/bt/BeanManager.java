@@ -27,6 +27,8 @@ package com.sim.board.bt;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothAdapter.LeScanCallback;
 import android.bluetooth.BluetoothDevice;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 
 import java.nio.ByteBuffer;
@@ -104,10 +106,15 @@ public class BeanManager {
         mBeans.clear();
         mListener = listener;
         mScanning = true;
-        if (BluetoothAdapter.getDefaultAdapter().startLeScan(mCallback)) {
-            mHandler.postDelayed(mCompleteDiscoveryCallback, SCAN_TIMEOUT);
-            return true;
+        if (!BluetoothAdapter.getDefaultAdapter().enable()) {
+            mListener.onBlueToothDisable();
+        } else {
+            if (BluetoothAdapter.getDefaultAdapter().startLeScan(mCallback)) {
+                mHandler.postDelayed(mCompleteDiscoveryCallback, SCAN_TIMEOUT);
+                return true;
+            }
         }
+
         return false;
     }
 

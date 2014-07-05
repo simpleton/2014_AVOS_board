@@ -39,4 +39,7 @@ public interface BeanDiscoveryListener {
      * Called when the discovery is completed.
      */
     public void onDiscoveryComplete();
+
+
+    public void onBlueToothDisable() ;
 }

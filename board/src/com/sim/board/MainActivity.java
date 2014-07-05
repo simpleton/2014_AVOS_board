@@ -1,41 +1,57 @@
 package com.sim.board;
 
 import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.Toast;
 import com.sim.board.bt.Bean;
 import com.sim.board.bt.BeanDiscoveryListener;
 import com.sim.board.bt.BeanListener;
 import com.sim.board.bt.BeanManager;
+import com.sim.board.util.ToastUtil;
 import net.simonvt.menudrawer.MenuDrawer;
 import net.simonvt.menudrawer.Position;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
 
 public class MainActivity extends Activity {
     /**
      * Called when the activity is first created.
      */
-    private Button scanBtn;
-    private Button sendBtn;
     private static final String TAG = "MainActivity";
+    private Button scanBtn;
+    private Button startBtn;
+    private Button endBtn;
     private Bean  mBean;
-
     private MenuDrawer mDrawer;
+
+    private static final int REQUEST_ENABLE_BT = 2;
+
     final BeanListener beanListener = new BeanListener() {
         @Override
         public void onConnected() {
+            ToastUtil.TextToast(MainActivity.this, "onConnected", 3000);
             Log.d(TAG, "onConnected");
         }
 
         @Override
         public void onConnectionFailed() {
+            ToastUtil.TextToast(MainActivity.this, "onConnectionFailed", 3000);
             Log.d(TAG, "onConnectionFailed");
         }
 
         @Override
         public void onDisconnected() {
+            ToastUtil.TextToast(MainActivity.this, "onDisconnected", 3000);
             Log.d(TAG, "onDisconnected");
         }
 
@@ -49,12 +65,21 @@ public class MainActivity extends Activity {
         @Override
         public void onBeanDiscovered(Bean bean) {
             mBean = bean;
-            Log.d(TAG, "onBeanDiscovered");
+            Log.i(TAG, "onBeanDiscovered");
         }
 
         @Override
         public void onDiscoveryComplete() {
-            Log.d(TAG, "onDiscoverComplete");
+            if (mBean != null) {
+                mBean.connect(MainActivity.this, beanListener);
+            }
+            Log.i(TAG, "onDiscoverComplete");
+        }
+
+        @Override
+        public void onBlueToothDisable() {
+            Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableIntent, REQUEST_ENABLE_BT);
         }
     };
 
@@ -64,14 +89,28 @@ public class MainActivity extends Activity {
         setContentView(R.layout.main);
         mDrawer = MenuDrawer.attach(this, Position.RIGHT);
         mDrawer.setContentView(R.layout.main);
-        mDrawer.setMenuView(R.layout.main);
+        mDrawer.setMenuView(R.layout.profile);
         initBtn();
         initDevice();
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case REQUEST_ENABLE_BT:
+                if (resultCode == Activity.RESULT_OK) {
+                    initDevice();
+                }
+                break;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
     private void initBtn() {
         scanBtn = (Button) findViewById(R.id.scan);
-        sendBtn = (Button) findViewById(R.id.send);
+        startBtn = (Button) findViewById(R.id.start);
+        endBtn = (Button) findViewById(R.id.stop);
         scanBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,17 +118,54 @@ public class MainActivity extends Activity {
             }
         });
 
-        sendBtn.setOnClickListener(new View.OnClickListener() {
+        startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (mBean != null) {
-                    mBean.connect(MainActivity.this, beanListener);
+                    mBean.sendSerialMessage("1/n");
+                } else {
+                    initDevice();
+                }
+            }
+        });
+
+        endBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mBean != null) {
+                    mBean.sendSerialMessage("0/n");
+                } else {
+                    initDevice();
                 }
             }
         });
     }
 
     private boolean initDevice() {
+        BeanManager.getInstance().startDiscovery(beanDiscoveryListener);
+        return true;
+    }
+
+    private boolean initProfileAction() {
+        ListView listView = (ListView) findViewById(R.id.user_action);
+
+        ArrayList<HashMap<String, Object>> listItem = new ArrayList<HashMap<String, Object>>(6);
+        for (int i = 0; i < 6; ++i) {
+            HashMap<String, Object> map = new HashMap<String, Object>();
+            map.put("ItemIcon", R.drawable.ic_launcher);
+            map.put("ItemText", "just a test");
+
+            listItem.add(map);
+        }
+
+        SimpleAdapter adapter = new SimpleAdapter(
+                this,
+                listItem,
+                R.layout.profile_list_item,
+                new String[] {"ItemIcon", "ItemText"},
+                new int[] {R.id.user_action_icon, R.id.user_action_text} );
+
+        listView.setAdapter(adapter);
         return true;
     }
 }

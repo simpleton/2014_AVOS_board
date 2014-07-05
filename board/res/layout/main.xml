@@ -19,6 +19,15 @@
             android:layout_marginTop="20dp"
             android:layout_width="fill_parent"
             android:layout_height="60dp"
-            android:id="@+id/send"/>
+            android:id="@+id/start"
+            android:text="start"/>
+
+    <Button
+            android:layout_marginTop="20dp"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:id="@+id/stop"
+            android:text="stop"/>
+
 </LinearLayout>
 
