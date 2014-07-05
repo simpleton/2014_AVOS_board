@@ -90,6 +90,7 @@ public class MainActivity extends Activity {
         mDrawer.setMenuView(R.layout.profile);
         initBtn();
         initDevice();
+        initProfileAction();
     }
 
 
