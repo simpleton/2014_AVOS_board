@@ -1,6 +1,5 @@
 package com.sim.board;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
@@ -9,6 +8,8 @@ import com.amap.api.location.AMapLocationListener;
 import com.amap.api.location.LocationManagerProxy;
 import com.amap.api.location.LocationProviderProxy;
 import com.amap.api.maps.AMap;
+import com.amap.api.maps.CameraUpdate;
+import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.BitmapDescriptor;
@@ -30,7 +31,8 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
 	private OnLocationChangedListener mListener;
 	private LocationManagerProxy mAMapLocationManager;
 	private Marker marker;// 定位雷达小图标
-    
+
+    private boolean isResized = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,7 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
 	 * 设置一些amap的属性
 	 */
 	private void setUpMap() {
+
 		ArrayList<BitmapDescriptor> giflist = new ArrayList<BitmapDescriptor>();
 		giflist.add(BitmapDescriptorFactory.fromResource(R.drawable.point1));
 		giflist.add(BitmapDescriptorFactory.fromResource(R.drawable.point2));
@@ -79,8 +82,10 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
 				.fromResource(R.drawable.location_marker));// 设置小蓝点的图标
 		myLocationStyle.strokeColor(Color.BLACK);// 设置圆形的边框颜色
 		myLocationStyle.radiusFillColor(Color.argb(100, 0, 0, 180));// 设置圆形的填充颜色
+
 		// myLocationStyle.anchor(int,int)//设置小蓝点的锚点
-		myLocationStyle.strokeWidth(0.1f);// 设置圆形的边框粗细
+		myLocationStyle.strokeWidth(1.0f);// 设置圆形的边框粗细
+
 		aMap.setMyLocationStyle(myLocationStyle);
 		aMap.setMyLocationRotateAngle(180);
 		aMap.setLocationSource(this);// 设置定位监听
@@ -99,6 +104,7 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
 	protected void onResume() {
 		super.onResume();
 		mapView.onResume();
+        isResized = false;
 	}
 
 	/**
@@ -159,9 +165,20 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
 					.getLongitude()));// 定位雷达小图标
 			float bearing = aMap.getCameraPosition().bearing;
 			aMap.setMyLocationRotateAngle(bearing);// 设置小蓝点旋转角度
-		}
+            if (!isResized) {
+                changeCamera(CameraUpdateFactory.zoomTo(16f));
+                isResized = true;
+            }
+        }
 	}
 
+    /**
+     * 根据动画按钮状态，调用函数animateCamera或moveCamera来改变可视区域
+     */
+    private void changeCamera(CameraUpdate update) {
+        //aMap.animateCamera(update, 1000, null);
+        aMap.moveCamera(update);
+    }
 	/**
 	 * 激活定位
 	 */
@@ -178,7 +195,8 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
 			 */
 			mAMapLocationManager.requestLocationUpdates(
 					LocationProviderProxy.AMapNetwork, 2000, 10, this);
-		}
+
+        }
 	}
 
 	/**
