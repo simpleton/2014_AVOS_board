@@ -21,6 +21,4 @@
     <item name="md__translationX" type="id" />
 
     <item name="md__translationY" type="id" />
-
-    <item name="text" type="id"/>
 </resources>
