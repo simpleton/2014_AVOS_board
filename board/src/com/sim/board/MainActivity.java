@@ -3,8 +3,11 @@ package com.sim.board;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -25,6 +28,7 @@ public class MainActivity extends Activity {
     /**
      * Called when the activity is first created.
      */
+    private static final int MENU_OVERFLOW = 1;
     private static final String TAG = "MainActivity";
     private Button scanBtn;
     private Button startBtn;
@@ -85,6 +89,7 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.ab_background));
         mDrawer = MenuDrawer.attach(this, Position.RIGHT);
         mDrawer.setContentView(R.layout.main);
         mDrawer.setMenuView(R.layout.profile);
@@ -93,6 +98,31 @@ public class MainActivity extends Activity {
         initProfileAction();
     }
 
+    @Override
+    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+        return super.onMenuItemSelected(featureId, item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuItem overflowItem = menu.add(0, MENU_OVERFLOW, 0, null);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            overflowItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        }
+        overflowItem.setIcon(R.drawable.ic_menu_moreoverflow_normal_holo_light);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_OVERFLOW:
+                mDrawer.toggleMenu();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
