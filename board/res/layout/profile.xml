@@ -28,6 +28,8 @@
                 android:layout_width="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="chris jamz sim"
+                android:textSize="20dp"
+                android:textColor="@color/white"
                 />
 
         <ImageView
@@ -40,11 +42,18 @@
         </ImageView>
     </LinearLayout>
 
+    <ImageView
+            android:layout_height="2dp"
+            android:layout_width="fill_parent"
+            android:background="@color/white"
+            android:layout_marginTop="20dp"
+            />
     <ListView
             android:id="@+id/user_action"
-            android:layout_marginTop="20dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:divider="@android:color/white"
+            android:dividerHeight="1dp"
             >
     </ListView>
 </LinearLayout>

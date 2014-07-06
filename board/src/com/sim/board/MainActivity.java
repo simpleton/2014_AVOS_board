@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -242,10 +243,11 @@ public class MainActivity extends BaseActivity {
         ListView listView = (ListView) findViewById(R.id.user_action);
 
         ArrayList<HashMap<String, Object>> listItem = new ArrayList<HashMap<String, Object>>(6);
+        String [] title = new String[]{"任务", "战绩", "朋友圈", "贴纸商店", "绑定账户", "设置"};
         for (int i = 0; i < 6; ++i) {
             HashMap<String, Object> map = new HashMap<String, Object>();
             map.put("ItemIcon", R.drawable.ic_launcher);
-            map.put("ItemText", "just a test");
+            map.put("ItemText", title[i]);
 
             listItem.add(map);
         }
@@ -258,6 +260,27 @@ public class MainActivity extends BaseActivity {
                 new int[] {R.id.user_action_icon, R.id.user_action_text} );
 
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i) {
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    default:
+                        ;
+                }
+            }
+        });
         return true;
     }
 
