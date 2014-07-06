@@ -1,6 +1,5 @@
 package com.sim.board;
 
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
@@ -31,7 +30,6 @@ import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.FindCallback;
 import com.sim.board.model.Club;
 import com.sim.board.model.Venue;
-import com.sim.board.util.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,12 +50,17 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
     private boolean isResized = false;
     private static final int VENUE_SIZE = 800;
 
+    private static final String MODE_INTENT = "mode_intent";
 
+    private static final int MODE_DEFAUL = 0;
+    private static final int MODE_VENUE = 1;
+    private static final int MODE_MISSION = 2;
+
+    private int mode = 0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
         AVAnalytics.trackAppOpened(getIntent());
 		super.onCreate(savedInstanceState);
-
 
 		setContentView(R.layout.locationsource_activity);
         getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.ab_background));
@@ -71,6 +74,8 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
 		mapView = (MapView) findViewById(R.id.map);
 		mapView.onCreate(savedInstanceState);// 此方法必须重写
 		init();
+        mode = getIntent().getIntExtra(MODE_INTENT, 0);
+
     }
 
 	/**
@@ -81,7 +86,6 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
 			aMap = mapView.getMap();
 			setUpMap();
 		}
- 
 	}
 
 	/**
@@ -285,6 +289,13 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
         query.whereNear("location", geoPoint);
         query.setLimit(limit);
         query.findInBackground(callback);
+    }
+
+    public void parseMission(List<AVObject> list) {
+        if (list == null) return;
+        for (AVObject avObject : list) {
+            
+        }
     }
 
     public void parserData(List<AVObject> list) {
