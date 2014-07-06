@@ -1,5 +1,6 @@
 package com.sim.board;
 
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.FindCallback;
 import com.sim.board.model.Club;
 import com.sim.board.model.Venue;
+import com.sim.board.util.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -302,15 +304,44 @@ public class LocationSourceActivity extends BaseActivity implements LocationSour
             venue.club = club;
             Log.i(TAG, venue.toString());
 
-            drawVenue(venue.location, Color.parseColor(club.color));
+            drawVenue(venue);
         }
     }
 
-    public void drawVenue(AVGeoPoint avGeoPoint, int color) {
+    public void drawVenue(Venue venue) {
+        int color = Color.parseColor(venue.club.color);
+        AVGeoPoint avGeoPoint = venue.location;
         Circle circle = aMap.addCircle(new CircleOptions().center(new LatLng(avGeoPoint.getLatitude(), avGeoPoint.getLongitude()))
                 .radius(VENUE_SIZE).strokeColor(Color.BLUE).fillColor(color)
                 .strokeWidth(1));
         circle.setFillColor(Color.argb(127, Color.red(color),
                 Color.green(color), Color.blue(color)));
+        addMarkersToMap(venue);
+/*        Bitmap bitmap = null;
+        try {
+            bitmap = Utils.Bytes2Bimap(venue.club.logo.getData());
+        } catch (AVException e) {
+            e.printStackTrace();
+        }*/
+  //      BitmapDescriptor bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(bitmap);
+
+    }
+
+    private void addMarkersToMap(Venue venue)  {
+        AVGeoPoint avGeoPoint = venue.location;
+        //声明一个动画帧集合。
+        ArrayList giflist = new ArrayList();
+        giflist.add(BitmapDescriptorFactory
+                .defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+        giflist.add(BitmapDescriptorFactory
+                .defaultMarker(BitmapDescriptorFactory.HUE_RED));
+        giflist.add(BitmapDescriptorFactory
+                .defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
+        //设置远小近大效果,2.1.0版本新增；设置刷新一次图片资源的周期。
+        Marker  marker = aMap.addMarker(new MarkerOptions().anchor(0.5f, 0.5f)
+                .position(new LatLng(avGeoPoint.getLatitude(), avGeoPoint.getLongitude())).title(venue.club.name)
+                .snippet(venue.name).icons(giflist)
+                .perspective(true).draggable(true).period(50));
+        marker.showInfoWindow();// 设置默认显示一个infowinfow
     }
 }

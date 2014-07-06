@@ -22,7 +22,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.sim.board" />
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/com/sim/board/LocationSourceActivity.java" line="312" mnemonic="0" />
+    <bookmark url="file://$PROJECT_DIR$/src/com/sim/board/LocationSourceActivity.java" line="316" mnemonic="0" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a3c7b04-6ca3-44bc-a4f4-83537daa6769" name="Default" comment="" />
@@ -47,51 +47,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LocationSourceActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/sim/board/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.44694534" vertical-offset="995" max-vertical-offset="3870">
+              <caret line="94" column="54" selection-start-line="94" selection-start-column="54" selection-end-line="94" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LocationSourceActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/sim/board/LocationSourceActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.5208334" vertical-offset="5178" max-vertical-offset="5796">
-              <caret line="312" column="42" selection-start-line="312" selection-start-column="42" selection-end-line="312" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="5521" max-vertical-offset="6246">
+              <caret line="318" column="29" selection-start-line="318" selection-start-column="29" selection-end-line="318" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2654#2672#0" expanded="true" />
-                <element signature="e#6608#6916#0" expanded="true" />
-                <element signature="e#6905#6906#0" expanded="true" />
-                <element signature="e#7092#7400#0" expanded="true" />
-                <element signature="e#7389#7390#0" expanded="true" />
-                <element signature="e#7774#7784#0" expanded="true" />
-                <element signature="e#8152#8162#0" expanded="true" />
+                <element signature="e#2719#2737#0" expanded="true" />
+                <element signature="e#7839#7849#0" expanded="true" />
+                <element signature="e#8217#8227#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Color.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/SDK/adt-bundle-mac-x86_64-20140321/sdk/platforms/android-19/android.jar!/android/graphics/Color.class">
+      <file leaf-file-name="BaseActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/sim/board/BaseActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="563" max-vertical-offset="864">
-              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CircleOptions.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/libs/AMap_3DMap_V2.2.1.jar!/com/amap/api/maps/model/CircleOptions.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.04" vertical-offset="414" max-vertical-offset="990">
-              <caret line="31" column="49" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AMap.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/libs/AMap_3DMap_V2.2.1.jar!/com/amap/api/maps/AMap.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.04" vertical-offset="540" max-vertical-offset="3438">
-              <caret line="38" column="48" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="648">
+              <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -103,60 +91,6 @@
               <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AVErrorUtils.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/libs/avoscloud-v2.5.9.jar!/com/avos/avoscloud/AVErrorUtils.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.2" vertical-offset="349" max-vertical-offset="612">
-              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AVQuery.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/libs/avoscloud-v2.5.9.jar!/com/avos/avoscloud/AVQuery.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.2" vertical-offset="4536" max-vertical-offset="4824">
-              <caret line="263" column="0" selection-start-line="263" selection-start-column="0" selection-end-line="263" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GetHttpResponseHandler.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/libs/avoscloud-v2.5.9.jar!/com/avos/avoscloud/GetHttpResponseHandler.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.2" vertical-offset="270" max-vertical-offset="558">
-              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Object.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/SDK/adt-bundle-mac-x86_64-20140321/sdk/platforms/android-19/android.jar!/java/lang/Object.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="237" max-vertical-offset="630">
-              <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Club.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/sim/board/model/Club.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
-              <caret line="17" column="77" selection-start-line="17" selection-start-column="77" selection-end-line="17" selection-end-column="77" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#313#314#0" expanded="true" />
-                <element signature="e#398#399#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -199,14 +133,15 @@
         <option value="$PROJECT_DIR$/res/layout/controller.xml" />
         <option value="$PROJECT_DIR$/src/com/sim/board/ControlActivity.java" />
         <option value="$PROJECT_DIR$/src/com/BaseActivity.java" />
-        <option value="$PROJECT_DIR$/src/com/sim/board/BaseActivity.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/com/sim/board/app/BoardApplication.java" />
-        <option value="$PROJECT_DIR$/src/com/sim/board/MainActivity.java" />
         <option value="$PROJECT_DIR$/src/com/sim/board/ControllerActivity.java" />
         <option value="$PROJECT_DIR$/src/com/sim/board/model/Venue.java" />
         <option value="$PROJECT_DIR$/src/com/sim/board/model/Club.java" />
+        <option value="$PROJECT_DIR$/src/com/sim/board/util/Utils.java" />
         <option value="$PROJECT_DIR$/src/com/sim/board/LocationSourceActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/sim/board/BaseActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/sim/board/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -295,6 +230,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="board" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="board" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="board" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="board" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -598,7 +559,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="774" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="100" y="122" width="1080" height="574" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -615,7 +576,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32844576" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.48387095" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.48387095" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -663,34 +624,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/sim/board/bt/internal/Protocol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="774">
-          <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sim/board/bt/BeanListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="702">
-          <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sim/board/bt/Bean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2228" max-vertical-offset="4986">
-          <caret line="195" column="20" selection-start-line="195" selection-start-column="16" selection-end-line="195" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sim/board/util/ToastUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="1044">
-          <caret line="20" column="32" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/profile_list_item.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.5185184" vertical-offset="202" max-vertical-offset="522">
@@ -973,17 +906,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="378">
           <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sim/board/BaseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="378">
-          <caret line="12" column="99" selection-start-line="12" selection-start-column="99" selection-end-line="12" selection-end-column="99" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -995,14 +918,6 @@
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sim/board/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3472" max-vertical-offset="3852">
-          <caret line="94" column="8" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1022,16 +937,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="237" max-vertical-offset="630">
           <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sim/board/model/Venue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="70" max-vertical-offset="468">
-          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1057,7 +962,7 @@
     </entry>
     <entry file="jar://$PROJECT_DIR$/libs/AMap_3DMap_V2.2.1.jar!/com/amap/api/maps/model/CircleOptions.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.04" vertical-offset="414" max-vertical-offset="990">
+        <state vertical-scroll-proportion="0.44055945" vertical-offset="414" max-vertical-offset="990">
           <caret line="31" column="49" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
           <folding />
         </state>
@@ -1065,7 +970,7 @@
     </entry>
     <entry file="jar://$PROJECT_DIR$/libs/avoscloud-v2.5.9.jar!/com/avos/avoscloud/AVErrorUtils.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.2" vertical-offset="349" max-vertical-offset="612">
+        <state vertical-scroll-proportion="0.62237763" vertical-offset="326" max-vertical-offset="612">
           <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
         </state>
@@ -1073,7 +978,7 @@
     </entry>
     <entry file="jar://$PROJECT_DIR$/libs/avoscloud-v2.5.9.jar!/com/avos/avoscloud/AVQuery.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.2" vertical-offset="4536" max-vertical-offset="4824">
+        <state vertical-scroll-proportion="0.6293706" vertical-offset="4536" max-vertical-offset="4824">
           <caret line="263" column="0" selection-start-line="263" selection-start-column="0" selection-end-line="263" selection-end-column="0" />
           <folding />
         </state>
@@ -1081,7 +986,7 @@
     </entry>
     <entry file="jar://$PROJECT_DIR$/libs/avoscloud-v2.5.9.jar!/com/avos/avoscloud/GetHttpResponseHandler.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.2" vertical-offset="270" max-vertical-offset="558">
+        <state vertical-scroll-proportion="0.6293706" vertical-offset="270" max-vertical-offset="558">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
         </state>
@@ -1089,26 +994,86 @@
     </entry>
     <entry file="jar://$USER_HOME$/SDK/adt-bundle-mac-x86_64-20140321/sdk/platforms/android-19/android.jar!/android/graphics/Color.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="563" max-vertical-offset="864">
+        <state vertical-scroll-proportion="0.6666667" vertical-offset="540" max-vertical-offset="864">
           <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sim/board/LocationSourceActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/com/sim/board/util/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5208334" vertical-offset="5178" max-vertical-offset="5796">
-          <caret line="312" column="42" selection-start-line="312" selection-start-column="42" selection-end-line="312" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.358804" vertical-offset="54" max-vertical-offset="414">
+          <caret line="9" column="30" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/AMap_3DMap_V2.2.1.jar!/com/amap/api/maps/model/BitmapDescriptorCreator.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5475285" vertical-offset="0" max-vertical-offset="306">
+          <caret line="9" column="41" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/AMap_3DMap_V2.2.1.jar!/com/amap/api/maps/model/BitmapDescriptor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25738397" vertical-offset="65" max-vertical-offset="738">
+          <caret line="7" column="59" selection-start-line="7" selection-start-column="59" selection-end-line="7" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#1188#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/AMap_3DMap_V2.2.1.jar!/com/amap/api/maps/model/MarkerOptions.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8631179" vertical-offset="601" max-vertical-offset="1512">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sim/board/model/Venue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="70" max-vertical-offset="468">
+          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2654#2672#0" expanded="true" />
-            <element signature="e#6608#6916#0" expanded="true" />
-            <element signature="e#6905#6906#0" expanded="true" />
-            <element signature="e#7092#7400#0" expanded="true" />
-            <element signature="e#7389#7390#0" expanded="true" />
-            <element signature="e#7774#7784#0" expanded="true" />
-            <element signature="e#8152#8162#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sim/board/LocationSourceActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5521" max-vertical-offset="6246">
+          <caret line="318" column="29" selection-start-line="318" selection-start-column="29" selection-end-line="318" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2719#2737#0" expanded="true" />
+            <element signature="e#7839#7849#0" expanded="true" />
+            <element signature="e#8217#8227#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sim/board/BaseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="648">
+          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sim/board/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44694534" vertical-offset="995" max-vertical-offset="3870">
+          <caret line="94" column="54" selection-start-line="94" selection-start-column="54" selection-end-line="94" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>

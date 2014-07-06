@@ -92,6 +92,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActionBar().setDisplayHomeAsUpEnabled(false);
         AVAnalytics.trackAppOpened(getIntent());
         setContentView(R.layout.main);
         getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.ab_background));
