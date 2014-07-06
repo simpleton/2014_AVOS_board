@@ -13,7 +13,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_margin="20dp"
             android:scaleType="centerInside"
-            android:src="@drawable/ic_launcher"
+            android:src="@drawable/Avatar"
             />
     <LinearLayout
             android:layout_height="wrap_content"
@@ -34,11 +34,10 @@
 
         <ImageView
                 android:id="@+id/medal"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:src="@drawable/ic_launcher"
-                android:scaleType="fitXY"
-                android:layout="@+id/user_name" android:layout_gravity="right">
+                android:src="@drawable/user class"
+                android:layout_gravity="right">
         </ImageView>
     </LinearLayout>
 

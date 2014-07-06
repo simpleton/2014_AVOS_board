@@ -24,7 +24,6 @@ import com.sim.board.util.SwipeDetector;
 import com.sim.board.util.ToastUtil;
 import net.simonvt.menudrawer.MenuDrawer;
 import net.simonvt.menudrawer.Position;
-import okio.Buffer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
